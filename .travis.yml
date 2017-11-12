@@ -8,4 +8,5 @@ install:
   - 'curl -fSL https://github.com/haya14busa/reviewdog/releases/download/$REVIEWDOG_VERSION/reviewdog_linux_amd64 -o ~/bin/reviewdog && chmod +x ~/bin/reviewdog'
 script:
   # - bundle exec rspec
+  - 'bundle exec rubocop'
   - 'bundle exec rubocop | reviewdog -f=rubocop -ci=travis'
