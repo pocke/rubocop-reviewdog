@@ -7,6 +7,7 @@ env:
 install:
   - 'mkdir -p ~/bin/ && export export PATH="~/bin/:$PATH"'
   - 'curl -fSL https://github.com/haya14busa/reviewdog/releases/download/$REVIEWDOG_VERSION/reviewdog_linux_amd64 -o ~/bin/reviewdog && chmod +x ~/bin/reviewdog'
+  - 'bundle install'
 script:
   # - bundle exec rspec
   - 'bundle exec rubocop'
