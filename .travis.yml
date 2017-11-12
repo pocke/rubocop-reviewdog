@@ -1,0 +1,11 @@
+language: ruby
+env:
+  global:
+    - REVIEWDOG_VERSION=0.9.8
+    - secure: K+Lz5LxZzVPoOgGBCxxNp8AwDVxnXiHlZE3u6tv/3ge3GWuOso7E6aaL0OIBaFIp/mLa32pZ/WT7YoI6RiPOCiMpToxaP1NYwiiIPmIUeWYvYkv9y0Q5IDqBCKLqXbAjxHHcLysUrSu2MaRAHQQ6z3AZzHj4Ie/NNQMwnso2TR9oDYM0IvnFi0ZXfPfyO9nePgj/f1Bvbkrkr5oAbRFgMRyOk/nO+G4ga10ZnYYFFgq5ah9ZEr+h2lsG9d1OGf1gleJ9LeM+Tm4eVHqZ/YT9qfO/NktWzJ9KXUAQQ3bPrXzBn5uo8eU0KeoT2gza1hT8WE60seNYTVUmA1eP2fwmsFdl5pqqxm98/6h2h4h2nTQWkqBbqS6kwP6AOOnZj++EMZOuOOwVqwM28oDhJ0fwpE3ULJ9qSY/1ppH0JyuVrldhLmxUXruLsssZzoKjcvANX/n/+AAhg36eaMCI3c225SwacurReXzz8IOepx20/iaoDR/fIAjl0Q1V+DJ9oEkwZ38RMC2fCisyFTGRYNEC14cERq2gSD4zjxYCeGfrkgrQ24wHYLA3Ss07qtxMVSOdyjW01sjl0hBBKxEMBvc8K6pYPef2xEIVij50hnQG1C956azirNYq6+KRH/2deC39eQ2OFI59bSYJ14SJWnHowHW429ct/XJYImTintToJ/w=
+install:
+  - 'mkdir -p ~/bin/ && export export PATH="~/bin/:$PATH"'
+  - 'curl -fSL https://github.com/haya14busa/reviewdog/releases/download/$REVIEWDOG_VERSION/reviewdog_linux_amd64 -o ~/bin/reviewdog && chmod +x ~/bin/reviewdog'
+script:
+  # - bundle exec rspec
+  - 'bundle exec rubocop | reviewdog -f=rubocop -ci=travis'
